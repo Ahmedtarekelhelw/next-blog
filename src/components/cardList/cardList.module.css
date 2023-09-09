@@ -1,0 +1,9 @@
+.container {
+  flex: 2.5;
+}
+
+.title {
+  font-size: 30px;
+  margin-bottom: 20px;
+  line-height: 0.9;
+}

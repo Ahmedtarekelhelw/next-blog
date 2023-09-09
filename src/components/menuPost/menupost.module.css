@@ -1,0 +1,40 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.img {
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid lightgray;
+}
+
+.category {
+  background-color: crimson;
+  border-radius: 10px;
+  padding: 5px;
+  font-size: 15px;
+  width: max-content;
+  color: #fff;
+}
+
+.details {
+}
+
+.title {
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+.author {
+  display: inline;
+  font-size: 15px;
+}
+
+.time {
+  font-size: 13px;
+  display: inline;
+  color: gray;
+}

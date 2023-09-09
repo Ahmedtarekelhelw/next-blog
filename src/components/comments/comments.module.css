@@ -1,0 +1,68 @@
+.container {
+  margin-top: 20px;
+}
+
+.title {
+  color: var(--textColor);
+}
+
+.form {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.input {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  border: 1px solid #bbb;
+}
+
+.btn {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 15px;
+  cursor: pointer;
+  background-color: teal;
+  color: #fff;
+  /* background-color; */
+}
+
+.comments {
+  margin-top: 50px;
+  max-height: 700px;
+  overflow-y: auto;
+}
+
+.comment {
+  margin-bottom: 30px;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.img {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.username {
+  font-size: 18px;
+}
+
+.time {
+  color: gray;
+  display: block;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+.text {
+  margin-top: 15px;
+}

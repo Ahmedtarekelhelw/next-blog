@@ -1,0 +1,49 @@
+.link {
+  cursor: pointer;
+}
+
+.logout {
+  cursor: pointer;
+}
+
+.burger {
+  width: 50px;
+  height: 30px;
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  cursor: pointer;
+}
+.line {
+  width: 40px;
+  height: 3px;
+  background-color: var(--textColor);
+}
+
+.responsiveMenu {
+  position: absolute;
+  left: 0;
+  top: 100px; /* This height of Navbar*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  width: 100%;
+  height: calc(100vh - 100px);
+  background-color: var(--bg);
+}
+@media (min-width: 640px) {
+  .responsiveMenu {
+    display: none;
+  }
+}
+@media (max-width: 640px) {
+  .burger {
+    display: flex;
+  }
+  .link {
+    display: none;
+  }
+}

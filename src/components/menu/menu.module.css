@@ -1,0 +1,22 @@
+.container {
+  /* grid-column: 12 / span 1; */
+  flex: 1;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    /* flex: 0; */
+  }
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  color: gray;
+}
+
+.mainTitle {
+  margin-top: 5px;
+}

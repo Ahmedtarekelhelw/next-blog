@@ -1,0 +1,13 @@
+.menuCategories {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.category {
+  padding: 5px 10px;
+
+  border-radius: 10px;
+}
