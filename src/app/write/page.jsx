@@ -4,9 +4,11 @@ import styles from "./write.module.css";
 import Image from "next/image";
 import "react-quill/dist/quill.bubble.css";
 
-import ReactQuill from "react-quill";
+// import ReactQuill from "react-quill";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+
+const ReactQuill = dynamic(import("react-quill"), { ssr: false });
 
 const Write = () => {
   const { status } = useSession();
