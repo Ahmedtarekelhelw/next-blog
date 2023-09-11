@@ -1,0 +1,58 @@
+.container {
+  position: relative;
+}
+
+.titleInput {
+  background-color: transparent;
+  border: none;
+  color: var(--textColor);
+  outline: none;
+  padding: 20px;
+  width: 100%;
+  font-size: 55px;
+  text-transform: capitalize;
+  margin-bottom: 20px;
+}
+
+.editors {
+  display: flex;
+  margin-bottom: 20px;
+  gap: 35px;
+}
+
+.btn {
+}
+
+.add {
+  display: flex;
+  gap: 10px;
+}
+
+.addbtn {
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  background-color: transparent;
+  border-radius: 50%;
+  border: 1px solid var(--textColor);
+}
+
+.addbtn:not(:first-child) {
+  border-color: #1a8917;
+}
+
+.textArea {
+  width: 100%;
+}
+
+.publish {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px 20px;
+  border: none;
+  background-color: #1a8917;
+  color: white;
+  cursor: pointer;
+  border-radius: 20px;
+}

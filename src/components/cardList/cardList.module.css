@@ -1,5 +1,6 @@
 .container {
   flex: 2.5;
+  width: 100%;
 }
 
 .title {

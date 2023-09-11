@@ -1,28 +1,41 @@
 import React from "react";
 import styles from "./categoryList.module.css";
-import { categories } from "@/categories";
 import Link from "next/link";
 import Image from "next/image";
-const CategoryList = () => {
+import axios from "axios";
+
+const getCategories = async () => {
+  try {
+    const res = await axios.get("http://localhost:3000/api/categories");
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const CategoryList = async () => {
+  const categories = await getCategories();
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Popular Categories</h2>
       <div className={styles.categories}>
-        {categories.map((cat) => (
+        {categories?.map((cat) => (
           <Link
-            href={`category/${cat.id}`}
+            href={`blog?cat=${cat.slug}`}
             className={styles.category}
             key={cat.id}
             style={{ backgroundColor: cat.color }}
           >
-            <Image
-              src={cat.img}
-              alt={cat.name}
-              className={styles.img}
-              width={30}
-              height={30}
-            />
-            <span>{cat.name}</span>
+            {cat?.img && (
+              <Image
+                src={cat.img}
+                alt={cat.title}
+                className={styles.img}
+                width={30}
+                height={30}
+              />
+            )}
+            <span>{cat.title}</span>
           </Link>
         ))}
       </div>
