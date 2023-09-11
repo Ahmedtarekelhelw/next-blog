@@ -43,13 +43,13 @@ const Write = () => {
           </div>
         )}
       </div>
-      <ReactQuill
+      {/* <ReactQuill
         className={styles.textArea}
         onChange={setValue}
         theme="bubble"
         value={value}
         placeholder="Tell your story..."
-      />
+      /> */}
 
       <button className={styles.publish}>Publish</button>
     </div>
