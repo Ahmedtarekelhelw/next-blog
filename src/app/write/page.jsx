@@ -7,6 +7,7 @@ import "react-quill/dist/quill.bubble.css";
 // import ReactQuill from "react-quill";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import dynamic from "next/dynamic";
 
 const ReactQuill = dynamic(import("react-quill"), { ssr: false });
 
