@@ -3,17 +3,39 @@
 import React, { useRef } from "react";
 import styles from "./comments.module.css";
 import Image from "next/image";
+import useSWR from "swr";
+import { useSession } from "next-auth/react";
+import axios from "axios";
 
-const Comments = () => {
+const getComments = async (url) => {
+  try {
+    const res = await axios.get(url);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+const Comments = ({ postSlug }) => {
+  const { status } = useSession();
+
+  const { data, isLoading, mutate } = useSWR(
+    `http://localhost:3000/api/comments?postSlug=${"1"}`,
+    getComments
+  );
   const inputRef = useRef();
   const commentsRef = useRef();
 
-  const makeComment = (e) => {
+  const makeComment = async (e) => {
     e.preventDefault();
-    console.log(inputRef.current.value);
+    const res = await axios.post("http://localhost:3000/api/comments", {
+      desc: inputRef.current.value,
+      postSlug,
+    });
+    mutate();
     commentsRef.current.scrollIntoView({ behavior: "smooth" });
     inputRef.current.value = "";
   };
+
   return (
     <div className={styles.container}>
       <h3 className={styles.title}>Comments</h3>
@@ -29,29 +51,28 @@ const Comments = () => {
         </button>
       </form>
       <div className={styles.comments}>
-        {Array(50)
-          .fill()
-          .map((a, i) => (
-            <div className={styles.comment} key={i} ref={commentsRef}>
+        {data?.length ? (
+          data?.map((comment) => (
+            <div className={styles.comment} key={comment.id} ref={commentsRef}>
               <div className={styles.userInfo}>
                 <Image
-                  src="/p1.jpeg"
+                  src={comment.user.image}
                   alt=""
                   width={60}
                   height={60}
                   className={styles.img}
                 />
                 <h3 className={styles.username}>
-                  Ahmed
-                  <span className={styles.time}>2203 - 03 - 01</span>
+                  {comment.user.name}
+                  <span className={styles.time}>{comment.createdAt}</span>
                 </h3>
               </div>
-              <p className={styles.text}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste
-                hic
-              </p>
+              <p className={styles.text}>{comment.desc}</p>
             </div>
-          ))}
+          ))
+        ) : (
+          <h3>There is No Comment</h3>
+        )}
       </div>
     </div>
   );

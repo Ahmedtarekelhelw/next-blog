@@ -52,7 +52,7 @@ const SingleBlog = async ({ params }) => {
             className={styles.postDesc}
             dangerouslySetInnerHTML={{ __html: post.desc }}
           />
-          <Comments />
+          <Comments postSlug={post.slug} />
         </div>
         <Menu />
       </div>
