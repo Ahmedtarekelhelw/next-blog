@@ -11,6 +11,7 @@ import axios from "axios";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage } from "@/utlits/firebase";
 import dynamic from "next/dynamic";
+import { CustomAxios } from "@/utlits/api";
 
 const Write = () => {
   const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
@@ -71,7 +72,7 @@ const Write = () => {
         // Handle successful uploads on complete
         // For instance, get the download URL: https://firebasestorage.googleapis.com/...
         getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-          const res = await axios.post("http://localhost:3000/api/posts", {
+          const res = await CustomAxios.post("posts", {
             img: downloadURL,
             title: titleRef.current.value,
             desc,
@@ -89,7 +90,7 @@ const Write = () => {
       setSubmit(false);
     } else if (submit) {
       const SubmitFun = async () => {
-        const res = await axios.post("http://localhost:3000/api/posts", {
+        const res = await CustomAxios.post("posts", {
           img: "",
           title: titleRef.current.value,
           desc,

@@ -3,12 +3,11 @@ import styles from "./cardList.module.css";
 import Pagination from "../pagination/Pagination";
 import Card from "../card/Card";
 import axios from "axios";
+import { CustomAxios } from "@/utlits/api";
 
 const getPosts = async (page, cat) => {
   try {
-    const res = await axios.get(
-      `http://localhost:3000/api/posts?page=${page}&cat=${cat || ""}`
-    );
+    const res = await CustomAxios.get(`posts?page=${page}&cat=${cat || ""}`);
     return {
       posts: res.data.posts,
       hasNext: res.data.hasNext,

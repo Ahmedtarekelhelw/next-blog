@@ -5,10 +5,11 @@ import Menu from "@/components/menu/Menu";
 import Comments from "@/components/comments/Comments";
 import axios from "axios";
 import moment from "moment";
+import { CustomAxios } from "@/utlits/api";
 
 const getPost = async (slug) => {
   try {
-    const res = await axios.get(`http://localhost:3000/api/posts/${slug}`);
+    const res = await CustomAxios.get(`posts/${slug}`);
     return res.data.post;
   } catch (error) {
     console.log(error);

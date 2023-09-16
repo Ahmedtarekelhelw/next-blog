@@ -6,10 +6,11 @@ import Image from "next/image";
 import useSWR from "swr";
 import { useSession } from "next-auth/react";
 import axios from "axios";
+import { CustomAxios } from "@/utlits/api";
 
 const getComments = async (url) => {
   try {
-    const res = await axios.get(url);
+    const res = await CustomAxios.get(url);
     return res.data;
   } catch (error) {
     console.log(error);
@@ -19,7 +20,7 @@ const Comments = ({ postSlug }) => {
   const { status } = useSession();
 
   const { data, isLoading, mutate } = useSWR(
-    `http://localhost:3000/api/comments?postSlug=${"1"}`,
+    `https://next13-newblog.vercel.app/api/comments?postSlug=${"1"}`,
     getComments
   );
   const inputRef = useRef();
@@ -27,7 +28,7 @@ const Comments = ({ postSlug }) => {
 
   const makeComment = async (e) => {
     e.preventDefault();
-    const res = await axios.post("http://localhost:3000/api/comments", {
+    const res = await CustomAxios.post("comments", {
       desc: inputRef.current.value,
       postSlug,
     });
