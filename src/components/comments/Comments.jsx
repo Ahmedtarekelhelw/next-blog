@@ -20,7 +20,7 @@ const Comments = ({ postSlug }) => {
   const { status } = useSession();
 
   const { data, isLoading, mutate } = useSWR(
-    `https://next13-newblog.vercel.app/api/comments?postSlug=${"1"}`,
+    `comments?postSlug=${"1"}`,
     getComments
   );
   const inputRef = useRef();
