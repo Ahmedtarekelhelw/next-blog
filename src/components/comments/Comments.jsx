@@ -20,7 +20,7 @@ const Comments = ({ postSlug }) => {
   const { status } = useSession();
 
   const { data, isLoading, mutate } = useSWR(
-    `comments?postSlug=${"1"}`,
+    `comments?postSlug=${postSlug}`,
     getComments
   );
   const inputRef = useRef();
