@@ -33,7 +33,7 @@ const Comments = ({ postSlug }) => {
       postSlug,
     });
     mutate();
-    commentsRef.current.scrollIntoView({ behavior: "smooth" });
+    commentsRef?.current?.scrollIntoView({ behavior: "smooth" });
     inputRef.current.value = "";
   };
 
